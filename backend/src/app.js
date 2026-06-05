@@ -11,7 +11,23 @@ const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
 
-app.use(cors({ origin: process.env.CORS_ORIGIN || 'http://localhost:5173', credentials: true }));
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map((o) => o.trim())
+  : ['http://localhost:5173'];
+
+app.use(
+  cors({
+    origin: (origin, cb) => {
+      // Allow same-origin (no Origin header) and listed origins
+      if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes('*')) {
+        cb(null, true);
+      } else {
+        cb(null, false);
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));

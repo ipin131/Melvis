@@ -1,0 +1,26 @@
+[build]
+  # Install root deps (serverless-http + backend deps), then build frontend
+  command = "npm install && cd frontend && npm install && npm run build"
+  publish = "frontend/dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[functions]
+  node_bundler = "esbuild"
+  # Keep native/dynamic modules external so Netlify ships them as-is from node_modules
+  external_node_modules = ["mysql2", "sequelize", "bcryptjs", "midtrans-client"]
+
+# Proxy /api/* calls to the serverless function (transparent rewrite)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+# SPA fallback — all other routes serve index.html (React Router)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
