@@ -1,4 +1,4 @@
-# ShopEase
+﻿# Melvis
 
 A full-stack e-commerce demo application built for academic testing purposes. Demonstrates unit, integration, system, and acceptance testing techniques with Cypress E2E automation.
 
@@ -17,7 +17,7 @@ A full-stack e-commerce demo application built for academic testing purposes. De
 ## Project Structure
 
 ```
-shopease/
+Melvis/
 ├── backend/                  # Express API
 │   ├── src/
 │   │   ├── config/           # Database config
@@ -58,7 +58,7 @@ shopease/
 ### 1. Create the MySQL database
 
 ```sql
-CREATE DATABASE shopease_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE Melvis_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 ### 2. Configure the backend
@@ -74,7 +74,7 @@ Edit `backend/.env`:
 DB_HOST=localhost
 DB_USER=root
 DB_PASS=your_mysql_password
-DB_NAME=shopease_db
+DB_NAME=Melvis_db
 JWT_SECRET=change_this_to_a_long_random_string
 MIDTRANS_SERVER_KEY=SB-Mid-server-xxxxxxxxxxxxxxxxxxxx
 MIDTRANS_CLIENT_KEY=SB-Mid-client-xxxxxxxxxxxxxxxxxxxx

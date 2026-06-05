@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+﻿import { useEffect, useMemo, useRef, useState } from 'react';
 import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import api from '../api';
@@ -178,7 +178,7 @@ export default function StoreFinder() {
         <div className="mb-6">
           <h1 className="text-3xl font-extrabold text-gray-900">Store Finder</h1>
           <p className="text-gray-500 mt-1 text-sm">
-            Temukan {allFeatures.length} toko ShopEase di seluruh Indonesia
+            Temukan {allFeatures.length} toko Melvis di seluruh Indonesia
             &nbsp;·&nbsp;
             <span className="text-blue-600 font-medium">Data via GeoJSON API</span>
           </p>

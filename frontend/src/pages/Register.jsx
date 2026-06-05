@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../api';
 import { useAuth } from '../context/AuthContext';
@@ -41,14 +41,14 @@ export default function Register() {
 
         <div className="relative">
           <Link to="/" className="text-3xl font-extrabold text-white tracking-tight">
-            Shop<span className="text-blue-200">Ease</span>
+            Mel<span className="text-blue-200">vis</span>
           </Link>
           <p className="text-blue-200 mt-1 text-sm">Indonesia's trusted retail platform</p>
         </div>
 
         <div className="relative">
           <h2 className="text-4xl font-extrabold text-white leading-tight mb-4">
-            Join ShopEase<br />
+            Join Melvis<br />
             <span className="text-blue-200">Today</span>
           </h2>
           <p className="text-blue-100 text-base mb-8 leading-relaxed">
@@ -69,7 +69,7 @@ export default function Register() {
           </div>
         </div>
 
-        <p className="relative text-blue-300 text-xs">© 2024 ShopEase. All rights reserved.</p>
+        <p className="relative text-blue-300 text-xs">© 2024 Melvis. All rights reserved.</p>
       </div>
 
       {/* Right panel */}
@@ -77,7 +77,7 @@ export default function Register() {
         <div className="w-full max-w-md">
           {/* Mobile logo */}
           <div className="lg:hidden text-center mb-8">
-            <Link to="/" className="text-3xl font-extrabold text-blue-600">ShopEase</Link>
+            <Link to="/" className="text-3xl font-extrabold text-blue-600">Melvis</Link>
             <p className="text-gray-500 mt-1 text-sm">Create your free account</p>
           </div>
 

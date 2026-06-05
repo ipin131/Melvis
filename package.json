@@ -1,7 +1,7 @@
-{
-  "name": "shopease",
+﻿{
+  "name": "Melvis",
   "version": "1.0.0",
-  "description": "ShopEase — full-stack e-commerce demo for software testing",
+  "description": "Melvis — full-stack e-commerce demo for software testing",
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run"

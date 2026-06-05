@@ -1,7 +1,7 @@
-{
-  "name": "shopease-backend",
+﻿{
+  "name": "Melvis-backend",
   "version": "1.0.0",
-  "description": "ShopEase Backend API",
+  "description": "Melvis Backend API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../api';
@@ -61,7 +61,7 @@ export default function Navbar() {
           <div className="flex items-center h-16 gap-4">
             {/* Logo */}
             <Link to="/" className="text-2xl font-extrabold text-blue-600 shrink-0 tracking-tight" data-testid="logo">
-              Shop<span className="text-indigo-500">Ease</span>
+              Mel<span className="text-indigo-500">vis</span>
             </Link>
 
             {/* Search (desktop) */}

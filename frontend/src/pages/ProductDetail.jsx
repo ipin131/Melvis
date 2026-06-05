@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import api from '../api';
 import { useAuth } from '../context/AuthContext';
@@ -31,7 +31,7 @@ const TRUST_BADGES = [
   { icon: '🚚', title: 'Free Delivery', desc: 'Orders over Rp 500k' },
   { icon: '↩️', title: '30-Day Returns', desc: 'Easy return process' },
   { icon: '🔒', title: 'Secure Payment', desc: 'Encrypted checkout' },
-  { icon: '✅', title: '1-Year Warranty', desc: 'Covered by ShopEase' },
+  { icon: '✅', title: '1-Year Warranty', desc: 'Covered by Melvis' },
 ];
 
 export default function ProductDetail() {
