@@ -1,6 +1,6 @@
 [build]
   # Install root deps (serverless-http + backend deps), then build frontend
-  command = "npm install && cd frontend && npm install && npm run build"
+  command = "npm install && cd frontend && npm install --include=dev && npm run build"
   publish = "frontend/dist"
   functions = "netlify/functions"
 
