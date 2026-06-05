@@ -1,0 +1,401 @@
+const { Product } = require('../models');
+
+const products = [
+  // ─── ELECTRONICS (10) ───────────────────────────────────────────────────────
+  {
+    name: 'iPhone 14 Pro 256GB',
+    description: 'Apple iPhone 14 Pro dengan Dynamic Island, kamera 48MP, chip A16 Bionic, dan always-on display. Layar Super Retina XDR 6.1 inci. Garansi resmi Apple 1 tahun.',
+    price: 14999000,
+    stock: 50,
+    image_url: 'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=500&auto=format&fit=crop',
+    category: 'electronics',
+  },
+  {
+    name: 'Samsung 65" QLED 4K Smart TV',
+    description: 'Samsung 65 inci QLED 4K dengan Quantum HDR, Quantum Processor 4K, dan aplikasi streaming bawaan. Pengalaman bioskop di rumah Anda.',
+    price: 12500000,
+    stock: 20,
+    image_url: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?w=500&auto=format&fit=crop',
+    category: 'electronics',
+  },
+  {
+    name: 'Sony WH-1000XM5 Headphones',
+    description: 'Headphone nirkabel dengan noise cancelling terdepan di industri. Baterai 30 jam, multi-device pairing, dan kualitas panggilan jernih.',
+    price: 3800000,
+    stock: 75,
+    image_url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop',
+    category: 'electronics',
+  },
+  {
+    name: 'Mechanical Gaming Keyboard TKL',
+    description: 'Keyboard mekanikal TKL dengan switch Cherry MX Red, backlight RGB per-key, dan rangka aluminium kokoh. Untuk gaming kompetitif.',
+    price: 1250000,
+    stock: 60,
+    image_url: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&auto=format&fit=crop',
+    category: 'electronics',
+  },
+  {
+    name: 'iPad Air M2 256GB WiFi',
+    description: 'iPad Air dengan chip M2 yang bertenaga, layar Liquid Retina 10.9 inci, dan dukungan Apple Pencil generasi 2. Sempurna untuk kreativitas dan produktivitas.',
+    price: 11500000,
+    stock: 35,
+    image_url: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&auto=format&fit=crop',
+    category: 'electronics',
+  },
+  {
+    name: 'Logitech MX Master 3S Mouse',
+    description: 'Mouse wireless premium dengan scroll MagSpeed elektromagnetik, sensor 8.000 DPI, koneksi multi-device Bluetooth. Ergonomis untuk kerja seharian.',
+    price: 1150000,
+    stock: 90,
+    image_url: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&auto=format&fit=crop',
+    category: 'electronics',
+  },
+  {
+    name: 'Samsung Galaxy Watch 6 Classic 47mm',
+    description: 'Smartwatch premium dengan bezel putar fisik, monitor detak jantung, EKG, deteksi tidur canggih, dan tahan air 5ATM. Baterai 40 jam.',
+    price: 3200000,
+    stock: 45,
+    image_url: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500&auto=format&fit=crop',
+    category: 'electronics',
+  },
+  {
+    name: 'TP-Link Archer AX73 WiFi 6',
+    description: 'Router WiFi 6 AX5400 dengan 6 antena, kecepatan hingga 5400 Mbps, dan jangkauan luas untuk rumah besar. Koneksi stabil untuk banyak perangkat.',
+    price: 850000,
+    stock: 80,
+    image_url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&auto=format&fit=crop',
+    category: 'electronics',
+  },
+  {
+    name: 'Xiaomi OLED Monitor 27" 144Hz',
+    description: 'Monitor OLED 27 inci 4K dengan refresh rate 144Hz, response time 0.03ms, dan color accuracy 99% DCI-P3. Ideal untuk desainer dan gamer.',
+    price: 4500000,
+    stock: 25,
+    image_url: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&auto=format&fit=crop',
+    category: 'electronics',
+  },
+  {
+    name: 'JBL Charge 5 Bluetooth Speaker',
+    description: 'Speaker Bluetooth portabel tahan air IP67 dengan bass yang kuat, playtime 20 jam, dan fitur power bank untuk mengisi perangkat lain.',
+    price: 1650000,
+    stock: 65,
+    image_url: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&auto=format&fit=crop',
+    category: 'electronics',
+  },
+
+  // ─── FASHION (8) ────────────────────────────────────────────────────────────
+  {
+    name: 'Nike Air Max 270',
+    description: "Unit Air terbesar Nike memberikan kenyamanan sepanjang hari. Bagian atas mesh yang bernapas dan midsole foam untuk tampilan sporty yang elegan.",
+    price: 1850000,
+    stock: 100,
+    image_url: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop',
+    category: 'fashion',
+  },
+  {
+    name: "Levi's 501 Original Jeans",
+    description: "Celana jeans original straight fit sejak 1873. Denim berat dengan button fly khas. Wardrobe essential yang tak lekang waktu.",
+    price: 750000,
+    stock: 150,
+    image_url: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=500&auto=format&fit=crop',
+    category: 'fashion',
+  },
+  {
+    name: 'Uniqlo Ultra Light Down Jacket',
+    description: 'Jaket bulu ringan yang bisa dilipat ke dalam sakunya sendiri. Hangat, tahan air, dengan insulasi down 640-fill-power premium.',
+    price: 599000,
+    stock: 80,
+    image_url: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500&auto=format&fit=crop',
+    category: 'fashion',
+  },
+  {
+    name: 'Leather Crossbody Bag',
+    description: 'Tas kulit asli dengan tali adjustable, beberapa kompartemen, dan hardware gold-tone. Muat tablet hingga 10 inci.',
+    price: 480000,
+    stock: 45,
+    image_url: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&auto=format&fit=crop',
+    category: 'fashion',
+  },
+  {
+    name: 'Adidas Ultraboost 22 Running',
+    description: 'Sepatu lari dengan teknologi Boost untuk energi return maksimal, upper Primeknit+ yang adaptif, dan Continental rubber outsole yang grippy.',
+    price: 2100000,
+    stock: 70,
+    image_url: 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=500&auto=format&fit=crop',
+    category: 'fashion',
+  },
+  {
+    name: 'Zara Oversized Linen Blazer',
+    description: 'Blazer oversized dari linen berkualitas tinggi. Desain minimalis modern dengan potongan bahu lebar. Tersedia dalam pilihan warna netral.',
+    price: 849000,
+    stock: 60,
+    image_url: 'https://images.unsplash.com/photo-1594938298603-c8148c4b4457?w=500&auto=format&fit=crop',
+    category: 'fashion',
+  },
+  {
+    name: 'New Balance 574 Classic',
+    description: 'Sneaker ikonik dengan cushioning ENCAP yang teruji waktu. Upper suede dan mesh premium dengan desain retro yang tetap relevan.',
+    price: 1350000,
+    stock: 85,
+    image_url: 'https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&auto=format&fit=crop',
+    category: 'fashion',
+  },
+  {
+    name: 'Longchamp Le Pliage Tote M',
+    description: 'Tas tote ikonik yang bisa dilipat, berbahan nylon tahan lama dengan pegangan kulit. Ringan, elegan, dan mudah dibawa ke mana saja.',
+    price: 1850000,
+    stock: 40,
+    image_url: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&auto=format&fit=crop',
+    category: 'fashion',
+  },
+
+  // ─── FOOD (8) ────────────────────────────────────────────────────────────────
+  {
+    name: 'Toraja Single Origin Coffee 500g',
+    description: "Biji kopi Arabika premium dari dataran tinggi Toraja. Roast medium dengan notes dark chocolate, brown sugar, dan keasaman buah yang lembut.",
+    price: 120000,
+    stock: 200,
+    image_url: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=500&auto=format&fit=crop',
+    category: 'food',
+  },
+  {
+    name: 'Dark Chocolate Gift Set',
+    description: 'Koleksi cokelat hitam artisan 70%, 85%, dan 90% kakao dari berbagai origin. Dikemas dalam kotak hadiah mewah dengan tasting notes.',
+    price: 195000,
+    stock: 120,
+    image_url: 'https://images.unsplash.com/photo-1548907040-4baa42d10919?w=500&auto=format&fit=crop',
+    category: 'food',
+  },
+  {
+    name: 'Milo Activ-Go Canister 1.5kg',
+    description: 'Minuman malt cokelat bergizi dengan Activ-Go Energy, kaya vitamin dan mineral. Disajikan hangat maupun dingin. Favorit keluarga Indonesia.',
+    price: 165000,
+    stock: 300,
+    image_url: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&auto=format&fit=crop',
+    category: 'food',
+  },
+  {
+    name: 'Indomie Goreng Special Box (40 pcs)',
+    description: 'Paket hemat Indomie Goreng rasa spesial isi 40 bungkus. Mie goreng instan paling populer di Indonesia dengan bumbu khas yang autentik.',
+    price: 95000,
+    stock: 500,
+    image_url: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=500&auto=format&fit=crop',
+    category: 'food',
+  },
+  {
+    name: 'Organic Matcha Premium Grade 100g',
+    description: 'Matcha organik grade premium dari Uji, Kyoto. Cocok untuk latte, dessert, atau upacara teh. Kaya antioksidan dan L-Theanine.',
+    price: 185000,
+    stock: 150,
+    image_url: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&auto=format&fit=crop',
+    category: 'food',
+  },
+  {
+    name: 'Almond Butter Natural 250g',
+    description: 'Almond butter 100% alami tanpa gula tambahan, tanpa pengawet. Kaya protein dan lemak sehat. Sempurna untuk smoothie, roti, atau snack sehat.',
+    price: 175000,
+    stock: 180,
+    image_url: 'https://images.unsplash.com/photo-1549591991-e6a2d5b09e03?w=500&auto=format&fit=crop',
+    category: 'food',
+  },
+  {
+    name: 'Bumbu Rempah Nusantara Kit',
+    description: 'Paket lengkap 12 rempah pilihan Indonesia: jahe, kunyit, kayu manis, cengkeh, pala, dan lainnya. Dikemas higienis, siap untuk masakan otentik.',
+    price: 220000,
+    stock: 250,
+    image_url: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&auto=format&fit=crop',
+    category: 'food',
+  },
+  {
+    name: 'Himalayan Pink Salt 500g + Grinder',
+    description: 'Garam Himalaya asli dengan mineral alami beserta grinder keramik yang mudah digunakan. Bebas zat aditif, memperkaya cita rasa masakan.',
+    price: 89000,
+    stock: 400,
+    image_url: 'https://images.unsplash.com/photo-1560963689-de3fdec7fdb1?w=500&auto=format&fit=crop',
+    category: 'food',
+  },
+
+  // ─── SPORTS (8) ──────────────────────────────────────────────────────────────
+  {
+    name: 'Manduka PRO Yoga Mat 6mm',
+    description: 'Yoga mat premium berukuran panjang dengan lapisan closed-cell yang higienis, grip unggul di permukaan basah, dan dukungan sendi optimal. Garansi seumur hidup.',
+    price: 1250000,
+    stock: 60,
+    image_url: 'https://images.unsplash.com/photo-1601925228072-4f15792ee4b2?w=500&auto=format&fit=crop',
+    category: 'sports',
+  },
+  {
+    name: 'Adjustable Dumbbell Set 5-24kg',
+    description: 'Dumbbell adjustable yang menggantikan 15 pasang dumbbell biasa. Sistem dial untuk ganti berat dalam hitungan detik. Hemat ruang, ideal untuk home gym.',
+    price: 2350000,
+    stock: 30,
+    image_url: 'https://images.unsplash.com/photo-1517963628607-235ccdd5476c?w=500&auto=format&fit=crop',
+    category: 'sports',
+  },
+  {
+    name: 'ASICS Gel-Nimbus 25 Running',
+    description: 'Sepatu lari premium dengan teknologi GEL cushioning generasi terbaru, upper engineered mesh yang bernapas, dan outsole AHARPLUS yang tahan lama.',
+    price: 2750000,
+    stock: 55,
+    image_url: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&auto=format&fit=crop',
+    category: 'sports',
+  },
+  {
+    name: 'TRX ALL-IN-ONE Suspension Trainer',
+    description: 'Alat fitness suspension trainer legendaris untuk latihan seluruh tubuh di mana saja. Termasuk anchor door, anchor for outdoors, dan panduan latihan.',
+    price: 1150000,
+    stock: 40,
+    image_url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&auto=format&fit=crop',
+    category: 'sports',
+  },
+  {
+    name: 'Garmin Forerunner 265 GPS Watch',
+    description: 'GPS smartwatch lari dengan layar AMOLED 1.3 inci, heart rate sensor, VO2 max, dan training readiness. Waterproof 5ATM, baterai hingga 13 hari.',
+    price: 4500000,
+    stock: 25,
+    image_url: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500&auto=format&fit=crop',
+    category: 'sports',
+  },
+  {
+    name: 'Sepeda Lipat Polygon Urbano 3',
+    description: 'Sepeda lipat ringan 7-speed dengan rangka aluminium, rem V-brake, dan lipatan quick-release. Cocok untuk komuter perkotaan dan gaya hidup aktif.',
+    price: 3200000,
+    stock: 20,
+    image_url: 'https://images.unsplash.com/photo-1558981852-426c349dd184?w=500&auto=format&fit=crop',
+    category: 'sports',
+  },
+  {
+    name: 'Speedo Biofuse Performance Goggles',
+    description: 'Kacamata renang dengan frame biofuse yang lembut dan lentur, lensa UV anti-fog, dan seal silikon yang nyaman untuk latihan intensif.',
+    price: 285000,
+    stock: 120,
+    image_url: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?w=500&auto=format&fit=crop',
+    category: 'sports',
+  },
+  {
+    name: 'Optimum Nutrition Gold Standard Whey 2kg',
+    description: 'Protein whey terlaris di dunia dengan 24g protein per serving, 5.5g BCAA alami, dan lebih dari 20 varian rasa. Tersedia rasa Double Rich Chocolate.',
+    price: 750000,
+    stock: 100,
+    image_url: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=500&auto=format&fit=crop',
+    category: 'sports',
+  },
+
+  // ─── BEAUTY (6) ──────────────────────────────────────────────────────────────
+  {
+    name: 'Somethinc Niacinamide 10% + Zinc 1% Serum',
+    description: 'Serum niacinamide konsentrasi tinggi untuk meratakan warna kulit, mengecilkan pori-pori, dan mengurangi bekas jerawat. Formula water-based ringan.',
+    price: 89000,
+    stock: 300,
+    image_url: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=500&auto=format&fit=crop',
+    category: 'beauty',
+  },
+  {
+    name: 'Wardah UV Shield Essential Sunscreen SPF 50 PA+++',
+    description: 'Sunscreen ringan non-comedogenic dengan perlindungan UVA/UVB tinggi. Tekstur serum gel cepat meresap, tidak lengket, cocok untuk semua jenis kulit.',
+    price: 55000,
+    stock: 500,
+    image_url: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&auto=format&fit=crop',
+    category: 'beauty',
+  },
+  {
+    name: 'SK-II Facial Treatment Essence 230ml',
+    description: 'Essens kecantikan ikonik dengan 90% Pitera™ untuk meregenerasi kulit. Mengurangi garis halus, meratakan tekstur, dan memberikan cahaya alami.',
+    price: 2450000,
+    stock: 35,
+    image_url: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format&fit=crop',
+    category: 'beauty',
+  },
+  {
+    name: 'The Ordinary Retinol 0.5% in Squalane',
+    description: 'Serum retinol dengan konsentrasi efektif dalam base squalane yang melembapkan. Membantu memperbaiki tekstur kulit dan mengurangi tanda penuaan.',
+    price: 195000,
+    stock: 200,
+    image_url: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=500&auto=format&fit=crop',
+    category: 'beauty',
+  },
+  {
+    name: 'Bioderma Sensibio H2O Micellar Water 500ml',
+    description: 'Micellar water dermatologis untuk membersihkan makeup, kotoran, dan minyak tanpa alkohol. Formula hypoallergenic, cocok untuk kulit sensitif.',
+    price: 225000,
+    stock: 250,
+    image_url: 'https://images.unsplash.com/photo-1605462863863-10d9e47e15ee?w=500&auto=format&fit=crop',
+    category: 'beauty',
+  },
+  {
+    name: 'Innisfree Green Tea Seed Eye Cream 30ml',
+    description: 'Krim mata dengan ekstrak Green Tea Seed dan Hyaluronic Acid untuk melembapkan dan mengurangi garis halus di area mata. Formula ringan, non-greasy.',
+    price: 350000,
+    stock: 150,
+    image_url: 'https://images.unsplash.com/photo-1627384113853-a55f9a90b3d8?w=500&auto=format&fit=crop',
+    category: 'beauty',
+  },
+
+  // ─── HOME (6) ────────────────────────────────────────────────────────────────
+  {
+    name: 'Philips LED Desk Lamp with USB Charging',
+    description: 'Lampu meja LED dengan 5 tingkat kecerahan, mode warna Day/Warm/Cold, port USB-A untuk pengisian daya, dan desain minimalis yang elegan.',
+    price: 450000,
+    stock: 90,
+    image_url: 'https://images.unsplash.com/photo-1503602642458-232111445657?w=500&auto=format&fit=crop',
+    category: 'home',
+  },
+  {
+    name: 'Bialetti Moka Express 6-Cup',
+    description: 'Moka pot ikonik buatan Italia sejak 1933. Membuat kopi espresso yang kaya di atas kompor gas atau listrik. Material aluminium food-grade berkualitas tinggi.',
+    price: 385000,
+    stock: 70,
+    image_url: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&auto=format&fit=crop',
+    category: 'home',
+  },
+  {
+    name: 'Xiaomi Smart Air Purifier 4',
+    description: 'Air purifier pintar dengan filter HEPA true 3-layer, sensor PM2.5 real-time, mode otomatis berbasis AI, dan kontrol via app Mi Home. Luas ruang hingga 28m².',
+    price: 1850000,
+    stock: 40,
+    image_url: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=500&auto=format&fit=crop',
+    category: 'home',
+  },
+  {
+    name: 'Tefal Ingenio Non-stick Pan Set 5pcs',
+    description: 'Set panci dan wajan anti lengket dengan teknologi Titanium Excellence, cocok untuk semua jenis kompor termasuk induksi. Termasuk rak penyimpanan.',
+    price: 650000,
+    stock: 55,
+    image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&auto=format&fit=crop',
+    category: 'home',
+  },
+  {
+    name: 'IKEA KALLAX Shelf Unit 4-Square',
+    description: 'Rak serbaguna 4 kotak yang bisa dipasang horizontal maupun vertikal. Cocok untuk buku, tanaman, display, atau dilengkapi dengan pintu tambahan.',
+    price: 1299000,
+    stock: 30,
+    image_url: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&auto=format&fit=crop',
+    category: 'home',
+  },
+  {
+    name: 'Casio Vintage Analog-Digital Wall Clock',
+    description: 'Jam dinding desain retro modern dengan tampilan analog dan digital, thermometer, dan hygrometer bawaan. Baterai AA. Cocok untuk ruang kerja atau ruang tamu.',
+    price: 285000,
+    stock: 100,
+    image_url: 'https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=500&auto=format&fit=crop',
+    category: 'home',
+  },
+];
+
+async function seed() {
+  await Product.destroy({ where: {} });
+  await Product.bulkCreate(products);
+  console.log(`Seeded ${products.length} products`);
+}
+
+if (require.main === module) {
+  require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
+  const { sequelize } = require('../models');
+  sequelize.authenticate()
+    .then(() => sequelize.sync({ alter: true }))
+    .then(seed)
+    .then(() => process.exit(0))
+    .catch((err) => { console.error(err); process.exit(1); });
+}
+
+module.exports = { seed };

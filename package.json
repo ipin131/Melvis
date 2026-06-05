@@ -1,0 +1,12 @@
+{
+  "name": "shopease",
+  "version": "1.0.0",
+  "description": "ShopEase — full-stack e-commerce demo for software testing",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "^13.3.0"
+  }
+}
